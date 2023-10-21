@@ -1,57 +1,59 @@
 import random
 import turtle
 import time
-c = turtle.Turtle()
-c.speed(0) 
+import tkinter
+adam = turtle.Turtle()
+adam.speed(0) 
 
 def adam_cizme(sayi):
     if sayi == 5:
-        c.penup()
-        c.goto(-50, 120) #adamın kafası
-        c.pendown()
-        c.circle(50)
+        adam.penup()
+        adam.goto(-50, 120)
+        adam.pendown()
+        adam.circle(50)
         
     elif sayi == 4:
-        c.left(90)
-        c.penup()
-        c.forward(50)
-        c.right(90)   #adamın gövdesi
-        c.forward(50)
-        c.pendown()
-        c.forward(150)
+        adam.left(90)
+        adam.penup()
+        adam.forward(50)
+        adam.right(90) 
+        adam.forward(50)
+        adam.pendown()
+        adam.forward(150)
         
     elif sayi == 3:
-        c.left(45)
-        c.forward(80) #sağ bacak
+        adam.left(45)
+        adam.forward(80)
 
     elif sayi == 2:
-        c.left(180)
-        c.penup()
-        c.forward(80) #sol bacak
-        c.left(90)
-        c.pendown()
-        c.forward(80)
+        adam.left(180)
+        adam.penup()
+        adam.forward(80)
+        adam.left(90)
+        adam.pendown()
+        adam.forward(80)
 
     elif sayi == 1:
-        c.left(180)
-        c.forward(80)
-        c.left(45)
-        c.forward(100) #sag kol 
-        c.right(50)
-        c.forward(80)
+        adam.left(180)
+        adam.forward(80)
+        adam.left(45)
+        adam.forward(100)
+        adam.right(50)
+        adam.forward(80)
 
     elif sayi == 0:
-        c.left(180)
-        c.forward(80) #sol kol
-        c.right(80)
-        c.forward(80)
+        adam.left(180)
+        adam.forward(80)
+        adam.right(80)
+        adam.forward(80)
+        time.sleep(1)
 
 def oyun():
-    c.penup()
-    c.goto(0, 250)
-    c.right(90)    #adamın ipi çiziliyor
-    c.pendown()
-    c.forward(80)
+    adam.penup()
+    adam.goto(0, 250)
+    adam.right(90)
+    adam.pendown()
+    adam.forward(80)
     bilinenler = []
     olusankelime = ""
     x = ""
@@ -74,9 +76,9 @@ def oyun():
                         print("Oyun bitti")
                         print("Doğru cevap " + kelime + " olacaktı")
                         print("Yeni oyun hazırlanıyor..")
-                        c.clear() 
-                        c.reset()
-                        c.speed(0)
+                        adam.clear() 
+                        adam.reset()
+                        adam.speed(0)
                         oyun()
                     print(str(can) + " canın kaldı")
 
@@ -92,9 +94,9 @@ def oyun():
             if olusankelime == kelime:
                 print("Kazandın")
                 print("Yeni oyun hazırlanıyor..")
-                c.clear() 
-                c.reset()
-                c.speed(0)
+                adam.clear() 
+                adam.reset()
+                adam.speed(0)
                 oyun()
 
 liste = ["hürriyet", "maksat", "yoksun",
@@ -108,4 +110,5 @@ liste = ["hürriyet", "maksat", "yoksun",
         "iddia", "merci", "kanaat",
         "nüfuz", "usul", "cevaz", "rücu",
         "isnat", "müsadere", "müeyyide"]
+
 oyun()
