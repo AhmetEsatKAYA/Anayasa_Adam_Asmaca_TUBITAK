@@ -12,7 +12,7 @@ root = tk.Tk()
 root.title("Adam Asmaca - Anayasa Sürümü AD-AS")
 harfyeri = tk.Label(root, font=("Arial", 26))
 harfyeri.pack()
-adamalan = tk.Canvas(root, bg="white", height=500, width=500)
+adamalan = tk.Canvas(root, bg="lightgreen", height=500, width=500)
 adamalan.pack()
 inf = tk.Label(root)
 inf.pack()
@@ -106,44 +106,31 @@ def kararver(kdurum, **kwargs):
             exit()
     else:
         ekinfo = kwargs.get('ekler', None)
-        print(ekinfo)
         cokolumsuz.play()
         karary = kutucuk.askquestion('Devam edilsin mi?', ekinfo)
         if karary == 'yes':
             inf.config(text="Yeni oyun başlatılıyor...")
         else:
             exit()
-def ses(cal):
-    playsound(cal)
 def adamciz(adamdurum):
     if adamdurum == 6:
-        print("sol bacak")
-        adamalan.create_line(150, 120, 170, 150, width=5)   # sağ bacak
+        adamalan.create_line(325, 240, 295, 270, width=5)   # sağ bacak
     elif adamdurum == 5:
-        print("sağ bacak")
-        adamalan.create_line(150, 120, 130, 150, width=5)   # sol bacak
+        adamalan.create_line(325, 240, 355, 270, width=5)   # sol bacak
     elif adamdurum == 4:
-        print("sol kol")
-        adamalan.create_line(150, 90, 170, 110, width=5)   # sağ kol
+        adamalan.create_line(325, 210, 295, 230, width=5)  # sağ kol
     elif adamdurum == 3:
-        print("sağ kol")
-        adamalan.create_line(150, 90, 130, 110, width=5)    # sol kol
+        adamalan.create_line(325, 210, 355, 230, width=5)    # sol kol
     elif adamdurum == 2:
-        print("gövde")
-        adamalan.create_line(150, 80, 150, 120, width=5)   # vücut
+        adamalan.create_line(325, 200, 325, 240, width=5)   # vücut
     elif adamdurum == 1:
-        print("kafa")
-        adamalan.create_oval(140, 60, 160, 80, width=5)   # kafa
+        adamalan.create_oval(315, 180, 335, 200, width=5)  # kafa
     elif adamdurum == 0:
-        print("ekran temizleniyor")
         adamalan.delete("all")
-        print("darağacı çiziliyor")
-        adamalan.create_line(50, 250, 150, 250, width=5, fill='darkblue')  # taban
-        adamalan.create_line(100, 250, 100, 50, width=5, fill='darkblue')  # dikme
-        adamalan.create_line(150, 50, 150, 50, width=5, fill='darkblue')   # üst çizgi
-        adamalan.create_line(100, 50, 150, 50, width=5, fill='darkblue')  # üst yan çizgi
-        adamalan.create_line(150, 60, 150, 50, width=5, fill='darkblue')  # ip
-        
+        adamalan.create_line(165, 480, 315, 480, width=5, fill='darkblue')  # taban
+        adamalan.create_line(250, 480, 250, 160, width=5, fill='darkblue')  # dikme
+        adamalan.create_line(250, 160, 325, 160, width=5, fill='darkblue')  # üst yan çizgi
+        adamalan.create_line(325, 180, 325, 160, width=5, fill='darkblue')  # ip    
 liste = ["hürriyet", "maksat", "yoksun",
         "sansür", "isyan", "makul",
         "esas", "muamele", "beyan",
