@@ -114,47 +114,61 @@ def kararver(kdurum, **kwargs):
             exit()
 def adamciz(adamdurum):
     if adamdurum == 6:
-        adamalan.create_line(325, 240, 295, 270, width=5)   # sağ bacak
+        adamalan.create_line(325, 205, 295, 235, width=5)   # sağ bacak
     elif adamdurum == 5:
-        adamalan.create_line(325, 240, 355, 270, width=5)   # sol bacak
+        adamalan.create_line(325, 205, 355, 235, width=5)   # sol bacak
     elif adamdurum == 4:
-        adamalan.create_line(325, 210, 295, 230, width=5)  # sağ kol
+        adamalan.create_line(325, 145, 295, 175, width=5)  # sağ kol
     elif adamdurum == 3:
-        adamalan.create_line(325, 210, 355, 230, width=5)    # sol kol
+        adamalan.create_line(325, 145, 355, 175, width=5)    # sol kol
     elif adamdurum == 2:
-        adamalan.create_line(325, 200, 325, 240, width=5)   # vücut
+        adamalan.create_line(325, 135, 325, 205, width=5)   # vücut
     elif adamdurum == 1:
-        adamalan.create_oval(315, 180, 335, 200, width=5)  # kafa
+        adamalan.create_oval(305, 98, 345, 138, width=5)  # kafa
     elif adamdurum == 0:
         adamalan.delete("all")
-        adamalan.create_line(165, 480, 315, 480, width=5, fill='darkblue')  # taban
-        adamalan.create_line(250, 480, 250, 160, width=5, fill='darkblue')  # dikme
-        adamalan.create_line(250, 160, 325, 160, width=5, fill='darkblue')  # üst yan çizgi
-        adamalan.create_line(325, 180, 325, 160, width=5, fill='darkblue')  # ip    
-liste = ["hürriyet", "maksat", "yoksun",
-        "sansür", "isyan", "makul",
-        "esas", "muamele", "beyan",
-        "zapt", "müracaat", "demokratik",
-        "bağdaşmak", "prensip", "haysiyet",
-        "istismar", "yahut", "ihlal",
-        "güvence", "müdafaa", "fıkra",
-        "ıslah", "müessese", "meşru",
-        "iddia", "merci", "kanaat",
-        "nüfuz", "usul", "cevaz", "rücu",
-        "isnat", "müsadere", "müeyyide"]
-
-listeAnlam = ["özgürlük","amaç","belli bir şeyin yokluğunu çeken",
-           "Bazı fikir ve haberlerin devlet tarafından kısıtlanması veya engellenmesidir","ayaklanma, başkaldırma","mantığa uygun olan",
-           "bir şeyin özü","tutum, yol","açıklamak, ortaya koymak",
-           "zorla alma, ele geçirme","başvuru","demokrasiye uygun olan",
-           "birbiriyle uyuşmak","ilke","onur, saygınlık",
-           "bir kişinin iyi niyetini kötüye kullanmak","ya da","zarar verme, bozma",
-           "alınan bu sorumluluğa güven sağlamak üzere ortaya konulan şey","savunma","gazetelerde bir olayı yorumlayan köşe yazısı",
-           "düzeltme, iyileştirme","kurum, kuruluş","doğru, haklı, yasal olan",
-           "taşımadığı bir niteliği, kendinde var olmayan bir yeteneği varmış gibi gösterme çabası","bir işin çözümü için başvurulan makam","elindekiyle yetinme",
-           "başkalarına söz geçirme","asıllar, kök","izin verme","geri dönme, cayma",
-           "kara çalma, suç yükleme","işlenen bir suç ile ilgili belirli bazı eşya veya kazançların mülkiyetinin devlete aktarılması","bir kişinin  hukuk kurallarına uygun davranmadığı durumlarda devletin zor kullanarak o kişinin kurallara uygun davranmasını sağlaması"]
-
+        adamalan.create_line(165, 398, 315, 398, width=5, fill='darkblue')  # taban
+        adamalan.create_line(250, 398, 250, 78, width=5, fill='darkblue')  # dikme
+        adamalan.create_line(250, 78, 325, 78, width=5, fill='darkblue')  # üst yan çizgi
+        adamalan.create_line(325, 78, 325, 98, width=5, fill='darkblue')  # ip    
+sozluk = {
+    "hürriyet": "özgürlük",
+    "maksat": "amaç",
+    "yoksun": "belli bir şeyin yokluğunu çeken",
+    "sansür": "Bazı fikir ve haberlerin devlet tarafından kısıtlanması veya engellenmesidir",
+    "isyan": "ayaklanma, başkaldırma",
+    "makul": "mantığa uygun olan",
+    "esas": "bir şeyin özü",
+    "muamele": "tutum, yol",
+    "beyan": "açıklamak, ortaya koymak",
+    "zapt": "zorla alma, ele geçirme",
+    "müracaat": "başvuru",
+    "demokratik": "demokrasiye uygun olan",
+    "bağdaşmak": "birbiriyle uyuşmak",
+    "prensip": "ilke",
+    "haysiyet": "onur, saygınlık",
+    "istismar": "bir kişinin iyi niyetini kötüye kullanmak",
+    "yahut": "ya da",
+    "ihlal": "zarar verme, bozma",
+    "güvence": "alınan bu sorumluluğa güven sağlamak üzere ortaya konulan şey",
+    "müdafaa": "savunma",
+    "fıkra": "gazetelerde bir olayı yorumlayan köşe yazısı",
+    "ıslah": "düzeltme, iyileştirme",
+    "müessese": "kurum, kuruluş",
+    "meşru": "doğru, haklı, yasal olan",
+    "iddia": "taşımadığı bir niteliği, kendinde var olmayan bir yeteneği varmış gibi gösterme çabası",
+    "merci": "bir işin çözümü için başvurulan makam",
+    "kanaat": "elindekiyle yetinme",
+    "nüfuz": "başkalarına söz geçirme",
+    "usul": "asıllar, kök",
+    "cevaz": "izin verme",
+    "rücu": "geri dönme, cayma",
+    "isnat": "kara çalma, suç yükleme",
+    "müsadere": "işlenen bir suç ile ilgili belirli bazı eşya veya kazançların mülkiyetinin devlete aktarılması",
+    "müeyyide": "bir kişinin  hukuk kurallarına uygun davranmadığı durumlarda devletin zor kullanarak o kişinin kurallara uygun davranmasını sağlaması"
+}
+liste = list(sozluk.keys())
+listeAnlam = list(sozluk.values())
 Harfler = "abcçdefgğhıijklmnoöprsştuüvyz"
 oyun()
 root.bind('<Key>', dnx)
