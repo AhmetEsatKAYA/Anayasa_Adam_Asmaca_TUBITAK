@@ -8,6 +8,7 @@ olumsuz = pygame.mixer.Sound('yanlis.mp3')
 cokolumsuz = pygame.mixer.Sound('kaybettin.mp3')
 cokolumlu = pygame.mixer.Sound('kazandin.mp3')
 olumlu = pygame.mixer.Sound('dogru.mp3')
+yanlisharf = pygame.mixer.Sound('yanlisharf.mp3')
 root = tk.Tk()
 root.title("Adam Asmaca - Anayasa Sürümü AD-AS")
 harfyeri = tk.Label(root, font=("Arial", 26))
@@ -55,36 +56,35 @@ def dnx(event):
             global kelsay
             global ekbilgi
             gelenharf = event.char
-            if len(gelenharf) == 1:
-                if gelenharf in Harfler:
-                    if gelenharf in bilinenler:
-                            harfyeri.config(fg="blue")
-                            inf.config(text="Aynı harfe bastınız")
-                    else:
-                        bilinenler.append(gelenharf)
-                        if gelenharf in kelime:
-                            harfyeri.config(fg="green")
-                            inf.config(text="Doğru")
-                            olumlu.play()
-                        else:
-                            harfyeri.config(fg="red")
-                            inf.config(text="Yanlış")
-                            can += 1
-                            adamciz(can)
-                            olumsuz.play()
-                            if can == 6:
-                                harfyeri.config(fg="black")
-                                inf.config(text="Kaybettin")
-                                ekbilgi = "Oyun bitti, kaybettin. Doğru cevap " + kelime + " olacaktı. Anlamı: " + kelimeAnlam + ". Devam edilsin mi?'"
-                                kararver(False, ekler=ekbilgi)
-                                oyun()
-                            cany = str(int(6-can))
-                            cani.config(text = kelsy)
+            if gelenharf in Harfler:
+                if gelenharf in bilinenler:
+                        harfyeri.config(fg="orange")
+                        inf.config(text="Aynı harfe bastınız")
+                        yanlisharf.play()
                 else:
-                    harfyeri.config(fg="red")
-                    inf.config(text="Lütfen harf giriniz")
+                    bilinenler.append(gelenharf)
+                    if gelenharf in kelime:
+                        harfyeri.config(fg="green")
+                        inf.config(text="Doğru")
+                        olumlu.play()
+                    else:
+                        harfyeri.config(fg="red")
+                        inf.config(text="Yanlış")
+                        can += 1
+                        adamciz(can)
+                        olumsuz.play()
+                        if can == 6:
+                            harfyeri.config(fg="black")
+                            inf.config(text="Kaybettin")
+                            ekbilgi = "Oyun bitti, kaybettin. Doğru cevap " + kelime + " olacaktı. Anlamı: " + kelimeAnlam + ". Devam edilsin mi?'"
+                            kararver(False, ekler=ekbilgi)
+                            oyun()
+                        cany = str(int(6-can))
+                        cani.config(text = kelsy)
             else:
-                inf.config(text="Lütfen 1 harf girin")
+                harfyeri.config(fg="red")
+                inf.config(text="Lütfen alfabede bulunan bir harfi giriniz")
+                olumsuz.play()
             olusankelime = ""
             for harf in kelime:
                 if harf in bilinenler:
