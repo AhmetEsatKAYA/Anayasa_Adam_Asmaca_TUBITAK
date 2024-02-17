@@ -9,6 +9,7 @@ cokolumsuz = pygame.mixer.Sound('kaybettin.mp3')
 cokolumlu = pygame.mixer.Sound('kazandin.mp3')
 olumlu = pygame.mixer.Sound('dogru.mp3')
 yanlisharf = pygame.mixer.Sound('yanlisharf.mp3')
+alfabe = pygame.mixer.Sound("alfabe.mp3")
 root = tk.Tk()
 root.title("Adam Asmaca - Anayasa Sürümü AD-AS")
 harfyeri = tk.Label(root, font=("Arial", 26))
@@ -55,7 +56,9 @@ def dnx(event):
             global kelime
             global kelsay
             global ekbilgi
-            gelenharf = event.char
+            gelenharf = (event.char).lower()
+            if gelenharf not in izinliHarfler:
+                return
             if gelenharf in Harfler:
                 if gelenharf in bilinenler:
                         harfyeri.config(fg="orange")
@@ -84,7 +87,7 @@ def dnx(event):
             else:
                 harfyeri.config(fg="red")
                 inf.config(text="Lütfen alfabede bulunan bir harfi giriniz")
-                olumsuz.play()
+                alfabe.play()
             olusankelime = ""
             for harf in kelime:
                 if harf in bilinenler:
@@ -169,7 +172,8 @@ sozluk = {
 }
 liste = list(sozluk.keys())
 listeAnlam = list(sozluk.values())
-Harfler = "abcçdefgğhıijklmnoöprsştuüvyz"
+Harfler = ['a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 'v', 'y', 'z']
+izinliHarfler = ['q', 'w', 'x', 'a', 'b', 'c', 'ç', 'd', 'e', 'f', 'g', 'ğ', 'h', 'ı', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ö', 'p', 'r', 's', 'ş', 't', 'u', 'ü', 'v', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/', '*', '-', '+', '"', ' ', '<', '>', '.', ',']
 oyun()
 root.bind('<Key>', dnx)
 root.mainloop()
